@@ -1,4 +1,5 @@
-/* ===================================================
+/*!
+ * ===================================================
  * bootstrap-markdown.js v2.1.1
  * http://github.com/toopay/bootstrap-markdown
  * ===================================================
@@ -19,7 +20,7 @@
 
 !function ($) {
 
-  "use strict"; // jshint ;_;
+  "use strict";
 
 
   /* MARKDOWN CLASS DEFINITION
@@ -74,11 +75,16 @@
         var y, btnGroups = buttonsArray[i]
         for (y=0;y<btnGroups.length;y++) {
           // Build each button group
-          var z,
-              buttons = btnGroups[y].data,
-              btnGroupContainer = $('<div/>', {
-                                    'class': 'btn-group'
-                                  })
+          var z, btnGroupContainer, btnGroup = btnGroups[y],
+              buttons = btnGroup.data;
+
+          if (this.$options[btnGroup.name] !== undefined && !this.$options[btnGroup.name]) {
+            continue;
+          }
+
+          btnGroupContainer = $('<div/>', {
+            'class': 'btn-group'
+          });
 
           for (z=0;z<buttons.length;z++) {
             var button = buttons[z],
@@ -87,6 +93,10 @@
                 btnText = button.btnText ? button.btnText : '',
                 btnClass = button.btnClass ? button.btnClass : 'btn',
                 tabIndex = button.tabIndex ? button.tabIndex : '-1'
+
+            if (this.$options[button.name] !== undefined && !this.$options[button.name]) {
+              continue;
+            }
 
             if (button.toggle == true) {
               buttonToggle = ' data-toggle="button"'
@@ -602,7 +612,7 @@
         }
       })
 
-	  // Trigger the onFocus hook
+      // Trigger the onFocus hook
       options.onFocus(this);
 
       return this
@@ -905,7 +915,7 @@
     onPreview: function (e) {},
     onSave: function (e) {},
     onBlur: function (e) {},
-    onFocus: function (e) {},
+    onFocus: function (e) {}
   }
 
   $.fn.markdown.Constructor = Markdown

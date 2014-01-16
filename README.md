@@ -7,6 +7,9 @@ Markdown editing meet Bootstrap.
 | Bootstrap Markdown v2.x | **only** compatible with Bootstrap 3.x |
 | Bootstrap Markdown v1.x | **only** compatible with Bootstrap 2.x |
 
+| Requirements |
+| http://github.com/evilstreak/markdown-js |
+
 Demo and documentation on [http://toopay.github.com/bootstrap-markdown/](http://toopay.github.com/bootstrap-markdown/)
 
 ### LICENSE
